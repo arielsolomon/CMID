@@ -1,7 +1,7 @@
 # dataset settings
 angle_version = 'le90'
 dataset_type = 'DOTADataset'
-data_root = r'F:\VisionData\1024DOTA\trainVAL'
+data_root = '/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/trainval/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -37,18 +37,18 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=r"F:\VisionData\DOTA\split_ss\trainVAL\trainVAL\annfiles",
-        img_prefix=r"F:\VisionData\DOTA\split_ss\trainVAL\trainVAL\images",
+        ann_file='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/trainval/annfiles/',
+        img_prefix='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/trainval/images/',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=r"F:\VisionData\DOTA\split_ss\trainVAL\trainVAL\annfiles",
-        img_prefix=r"F:\VisionData\DOTA\split_ss\trainVAL\trainVAL\images",
+        ann_file='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/trainval/annfiles/',
+        img_prefix='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/trainval/images/',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=r"F:\\VisionData\\DOTA\\split_ss\\test\\images",
-        img_prefix=r"F:\\VisionData\\DOTA\\split_ss\\test\\images",
+        ann_file='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/test/annfiles/',
+        img_prefix='/Data/atr_sat/mmrotate/data/split_ss_dota_07_02_2024/test/images/',
         pipeline=test_pipeline))
 
 
@@ -100,7 +100,7 @@ model = dict(
         norm_cfg=dict(type='BN', requires_grad=True),
         norm_eval=True,
         style='pytorch',
-        init_cfg=dict(type='Pretrained', checkpoint=r'F:\pumpkinCode\mmseg\pretrain_checkpoint\cmid_resnet50.pth')),
+        init_cfg=dict(type='Pretrained', checkpoint='/Data/atr_sat/CMID/Detection/ckpts/cmid_resnet50.pth')),
     neck=dict(
         type='FPN',
         in_channels=[256, 512, 1024, 2048],
